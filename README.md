@@ -30,3 +30,7 @@ cd tests && python3 test_nsx_cleanup.py && python3 test_esxio.py
 ```
 
 38 checks against stub hosts, with no vCenter and no SSH: the survey and the refusals, the per-host order, the esxio sweep, the removal loop and direct mode. The esxio fixtures are real output.
+
+## Where it sits
+
+The cheapest moment is before a host joins anything: once [esxi-vcf-host-prep](https://github.com/noahfarshad/esxi-vcf-host-prep) has it on the build and standalone, run this in `--direct` mode. After that it is the cluster that will not convert to a vLCM image in [vcf-import-prep](https://github.com/noahfarshad/vcf-import-prep)'s `image` step, one host at a time through vCenter. The overlay the import leaves out afterwards is [nsx-overlay-prep](https://github.com/noahfarshad/nsx-overlay-prep).
